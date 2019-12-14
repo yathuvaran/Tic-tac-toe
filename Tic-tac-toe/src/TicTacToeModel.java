@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
-public class TicTacToe {
+public class TicTacToeModel {
 	private int dimension; // Grid dimensions
 	private char grid[][];
 	private char turn;
 	private GameStatus gameState;
 	private int plays; // Used to detect full grid for draw
 
-	public TicTacToe(char initialTurn) {
+	public TicTacToeModel(char initialTurn) {
 		this(3, initialTurn);
 	}
 
-	public TicTacToe(int dimension, char initialTurn) {
+	public TicTacToeModel(int dimension, char initialTurn) {
 		if (dimension < 0) {
 			throw new IllegalArgumentException("Grid must be a positive size");
 		}
@@ -169,7 +169,7 @@ public class TicTacToe {
 	}
 
 	public static void main(String args[]) {
-		TicTacToe game = new TicTacToe('X');
+		TicTacToeModel game = new TicTacToeModel('X');
 		Scanner scanner = new Scanner(System.in);
 
 		do {
