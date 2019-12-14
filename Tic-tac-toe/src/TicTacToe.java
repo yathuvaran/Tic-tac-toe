@@ -122,9 +122,29 @@ public class TicTacToe {
 			} // else, look in another direction
 		}
 
-		// Look diagonally - Left-down - TBD
+		//Look diagonally - Left-down 
+		
+		count = 1;
+		for (int r = row + 1, c = column + 1; r < dimension && c < dimension; r++, c++) {
+			if (this.grid[row][column] == this.grid[r][c]) {
+				count++;
+				if (count == dimension) {
+					return charToEnum(grid[row][column]);
+				}
+			} // else, look in another direction
+		}
 
-		// Look diagonally - Right-down - TBD
+		// Look diagonally - Right-down
+		
+		count = 1;
+		for (int r = row + 1, c = column - 1; r < dimension && c >= 0; r++, c--) {
+			if (this.grid[row][column] == this.grid[r][c]) {
+				count++;
+				if (count == dimension) {
+					return charToEnum(grid[row][column]);
+				}
+			} // else, look in another direction
+		}
 
 		return GameStatus.IN_PROGRESS;
 	}
