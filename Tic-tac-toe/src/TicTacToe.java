@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class TicTacToe {
 	private int dimension; // Grid dimensions
@@ -91,7 +92,7 @@ public class TicTacToe {
 		}
 
 		count = 1;
-		for (int c = column + 1; c < this.nColumns; c++) {
+		for (int c = column + 1; c < dimension; c++) {
 			if (this.grid[row][column] == this.grid[row][c]) {
 				count++;
 				if (count == dimension) {
@@ -159,7 +160,7 @@ public class TicTacToe {
 			scanner.nextLine();
 			game.takeTurn(row, column);
 
-		} while (game.getGameState() == TicTacToeEnum.IN_PROGRESS);
+		} while (game.getGameState() == GameStatus.IN_PROGRESS);
 		System.out.println(game.getGameState());
 
 	}
