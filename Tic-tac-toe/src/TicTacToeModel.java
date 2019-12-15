@@ -36,6 +36,10 @@ public class TicTacToeModel {
 		this.turn = initialTurn;
 		this.plays = 0;
 		this.gameState = GameStatus.IN_PROGRESS;
+		TictactoeEvent e = new TictactoeEvent(this, this.grid, this.turn, this.gameState);
+		for (TictactoeListener listeners : views) {
+			listeners.handleReset(e);
+		}
 	}
 
 	public GameStatus takeTurn(int row, int column) {

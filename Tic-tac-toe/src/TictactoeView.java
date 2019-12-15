@@ -6,9 +6,9 @@ import javax.swing.*;
 
 public class TictactoeView extends JFrame implements TictactoeListener{
 
-	JButton[][] buttons;
-	JButton reset;
-	TicTacToeModel gameModel;
+	protected JButton[][] buttons;
+	protected JButton reset;
+	private TicTacToeModel gameModel;
 	
 
 	TictactoeView(TicTacToeModel gameModel) {
@@ -18,6 +18,7 @@ public class TictactoeView extends JFrame implements TictactoeListener{
 		JPanel buttonPanel = new JPanel();
 		JMenuBar menuBar = new JMenuBar();
 		reset = new JButton("Reset");
+		reset.addActionListener(new TictactoeController(gameModel,this));
 		buttons = new JButton[3][3];
 		for (int i = 0; i < buttons.length; i++) {
 			for (int j = 0; j < buttons.length; j++) {
@@ -47,6 +48,15 @@ public class TictactoeView extends JFrame implements TictactoeListener{
 	@Override
 	public void handleTictactoeEvent(TictactoeEvent e) {
 		buttons[e.getX()][e.getY()].setText(Character.toString(e.getTurn()));
+	}
+
+	@Override
+	public void handleReset(TictactoeEvent e) {
+		for (int i = 0; i < e.getGrid().length; i++) {
+			for (int j = 0; j < e.getGrid().length; j++) {
+				buttons[i][j].setText(null);
+			}
+		}
 	}
 
 }
