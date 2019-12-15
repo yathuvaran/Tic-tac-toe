@@ -1,3 +1,4 @@
+package Tictactoe;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,7 +45,7 @@ public class TicTacToeModel {
 
 	public GameStatus takeTurn(int row, int column) {
 		if (this.gameState != GameStatus.IN_PROGRESS) {
-			throw new IllegalArgumentException("Game Over");
+			throw new IllegalArgumentException("Game Over " + this.gameState);
 		}
 		if (row < 0 || row > this.dimension || column < 0 || column > this.dimension) {
 			throw new IllegalArgumentException("Grid is " + this.dimension + " by " + this.dimension);
