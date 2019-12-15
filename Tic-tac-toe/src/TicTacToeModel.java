@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TicTacToeModel {
@@ -6,6 +7,7 @@ public class TicTacToeModel {
 	private char turn;
 	private GameStatus gameState;
 	private int plays; // Used to detect full grid for draw
+	private ArrayList<TictactoeListener> views;
 
 	public TicTacToeModel(char initialTurn) {
 		this(3, initialTurn);
@@ -17,7 +19,12 @@ public class TicTacToeModel {
 		}
 		this.dimension = dimension;
 		this.grid = new char[dimension][dimension];
+		this.views = new ArrayList<TictactoeListener>();
 		reset(initialTurn);
+	}
+	
+	public void addView(TictactoeListener view) {
+		this.views.add(view);
 	}
 
 	public void reset(char initialTurn) {
@@ -43,8 +50,12 @@ public class TicTacToeModel {
 		}
 		this.grid[row][column] = this.turn;
 		this.plays++;
-		this.turn = (this.turn == 'X') ? 'O' : 'X'; // change turn
 		this.gameState = findWinner();
+		TictactoeEvent e = new TictactoeEvent(this, row, column, this.turn, this.gameState);
+		for (TictactoeListener listeners : views) {
+			listeners.handleTictactoeEvent(e);
+		}
+		this.turn = (this.turn == 'X') ? 'O' : 'X'; // change turn
 		return this.gameState;
 	}
 
