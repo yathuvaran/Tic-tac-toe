@@ -15,6 +15,8 @@ User input is processed via mouse. To place your peice, simply click on an empty
 
 The intital player is "X". Once "X" has placed their piece on the board, it becomes "O"'s turn. The player turns switch automatically.
 
+![picture](Images/SampleMoves.jpg)
+
 ### Reset
 
 Once a player has one the game, or the game is a draw; the board can be reset for another game. Simply click the reset button on the top left menu bar, and the board will be cleared. Again, the first player will be "X".
