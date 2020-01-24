@@ -7,6 +7,6 @@ These instructions will get you a copy of the project running on your local mach
 ### Getting started
 To get the game started, run the StartGame class as a Java Application. Or, run the Tic-tac-toe.jar file. You will be greeted with an empty grid.
 
-![picture](https://github.com/yathuvaran/Tic-tac-toe/master/Images/InitialBoard.png)
+![picture](Images/InitialBoard.jpg)
 
 ### Interacting with the game
